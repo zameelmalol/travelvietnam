@@ -1,0 +1,585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" id="changetheme" />
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/search.js"></script>
+  <title>CP3170 Project - History</title>
+
+</head>
+
+<body onload="startTime()">
+  <div id="loading">Loading...</div>
+  <div id="light" class="white_content">
+    <img src="images/common/close.png" class="close" onclick="normal()" alt="close">
+  </div>
+  <!--        <div id="fade" class="black_overlay" onclick="normal()"></div>   -->
+  <div id="loading-wrapper">
+
+    <div id="wrapper">
+
+      <div id="slideout">
+        <img src="images/common/feedback.png" alt="Feedback" />
+        <div id="slideout_inner">
+          <form>
+            <textarea class="input" placeholder="Type your feedback here"></textarea>
+            <input type="submit" value="Post feedback" class="button"></input>
+          </form>
+        </div>
+      </div>
+      <div id="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="history.html"><span class="gold">History</span></a></li>
+          <li><a href="demographics.html">Demographics</a></li>
+          <li><a href="culture.html">Culture</a></li>
+          <div id="txt" class="pos-text"></div>
+          
+        <div class="gold-box" onclick="goldStyleSheet()"></div>
+        <div class="red-box" onclick="redStyleSheet()"></div>
+        </ul>
+      </div>
+
+      <div id="content">
+       
+        <script type="text/javascript">
+          var day_of_week = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
+          var month_of_year = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+
+          //  DECLARE AND INITIALIZE VARIABLES
+          var Calendar = new Date();
+
+          var year = Calendar.getFullYear(); // Returns year
+          var month = Calendar.getMonth(); // Returns month (0-11)
+          var today = Calendar.getDate(); // Returns day (1-31)
+          var weekday = Calendar.getDay(); // Returns day (1-31)
+
+          var DAYS_OF_WEEK = 7; // "constant" for number of days in a week
+          var DAYS_OF_MONTH = 31; // "constant" for number of days in a month
+          var cal; // Used for printing
+
+          Calendar.setDate(1); // Start the calendar day at '1'
+          Calendar.setMonth(month); // Start the calendar month at now
+
+
+          /* VARIABLES FOR FORMATTING
+          NOTE: You can format the 'BORDER', 'BGCOLOR', 'CELLPADDING', 'BORDERCOLOR'
+                tags to customize your caledanr's look. */
+
+          var TR_start = '<TR>';
+          var TR_end = '</TR>';
+          var highlight_start = '<TD WIDTH="30"><TABLE ID="today" CLASS="selected" CELLSPACING=0 BORDER=1 BGCOLOR=DEDEFF BORDERCOLOR=CCCCCC><TR><TD WIDTH=20><B><CENTER>';
+          var highlight_end = '</CENTER></TD></TR></TABLE></B>';
+          var TD_start = '<TD WIDTH="30"><CENTER>';
+          var TD_end = '</CENTER></TD>';
+
+          /* BEGIN CODE FOR CALENDAR
+          NOTE: You can format the 'BORDER', 'BGCOLOR', 'CELLPADDING', 'BORDERCOLOR'
+          tags to customize your calendar's look.*/
+
+          cal = '<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=0 class="cal" BORDERCOLOR=BBBBBB><TR><TD>';
+          cal += '<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=2>' + TR_start;
+          cal += '<TD COLSPAN="' + DAYS_OF_WEEK + '" BGCOLOR="#EFEFEF"><CENTER><B>';
+          cal += month_of_year[month] + '   ' + year + '</B>' + TD_end + TR_end;
+          cal += TR_start;
+
+          //   DO NOT EDIT BELOW THIS POINT  //
+
+          // LOOPS FOR EACH DAY OF WEEK
+          for (index = 0; index < DAYS_OF_WEEK; index++) {
+
+            // BOLD TODAY'S DAY OF WEEK
+            if (weekday == index)
+              cal += TD_start + '<B>' + day_of_week[index] + '</B>' + TD_end;
+
+            // PRINTS DAY
+            else
+              cal += TD_start + day_of_week[index] + TD_end;
+          }
+
+          cal += TD_end + TR_end;
+          cal += TR_start;
+
+          // FILL IN BLANK GAPS UNTIL TODAY'S DAY
+          for (index = 0; index < Calendar.getDay(); index++)
+            cal += TD_start + '  ' + TD_end;
+
+          // LOOPS FOR EACH DAY IN CALENDAR
+          for (index = 0; index < DAYS_OF_MONTH; index++) {
+            if (Calendar.getDate() > index) {
+              // RETURNS THE NEXT DAY TO PRINT
+              week_day = Calendar.getDay();
+
+              // START NEW ROW FOR FIRST DAY OF WEEK
+              if (week_day == 0)
+                cal += TR_start;
+
+              if (week_day != DAYS_OF_WEEK) {
+
+                // SET VARIABLE INSIDE LOOP FOR INCREMENTING PURPOSES
+                var day = Calendar.getDate();
+
+                // HIGHLIGHT TODAY'S DATE
+                if (today == Calendar.getDate())
+                  cal += highlight_start + day + highlight_end + TD_end;
+
+                // PRINTS DAY
+                else
+                  cal += TD_start + day + TD_end;
+              }
+
+              // END ROW FOR LAST DAY OF WEEK
+              if (week_day == DAYS_OF_WEEK)
+                cal += TR_end;
+            }
+
+            // INCREMENTS UNTIL END OF THE MONTH
+            Calendar.setDate(Calendar.getDate() + 1);
+
+          } // end for loop
+
+          cal += '</TD></TR></TABLE></TABLE>';
+
+          //  PRINT CALENDAR
+          document.write(cal);
+
+          //  End -->
+        </script>
+        <!-- The Timeline -->
+        <h1 style="text-align:center;">Major Events of Vitenam</h1>
+
+        <ul class="timeline">
+
+          <li>
+            <div class="direction-r">
+              <div class="flag-wrapper">
+                <span class="flag">1945</span>
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>In march the Japanese declare French rule at and end in Vietnam and Emperor Bao Dai proclaims &#8220;independence&#8221; in March.</p>
+                <p>Aware that victory over the Japanese is near in May the Truman administration recognizes French claims to Indochina in part because of (1) the U.S. need for French cooperation in Washington&#8217;s plans for the reconstruction of Europe
+                  following World War II and (2) the growing orientation toward containment as a political/military strategy against communism.</p>
+                <p>During the Potsdam Conference in mid-July the allies are convinced that there should be a postwar (WWII) occupation of Indochina by British and Chinese forces in order to forestall independence and return Vietnam to France. At this time
+                  the Office ofStrategic Services (OSS) actively supports the Vietminh in their guerrilla war with Japan, and Major Archimedes Patti argues that Washington should recognize the independence of Vietnam.</p>
+                <p>In September the Communists secure domination in the Viet Minh with the Independence League seizing power; Ho Chi Minh declares full independence for Vietnam and establishes the Government of the Democratic Republic of Vietnam (GRDV) in
+                  Hanoi; he appeals to the U.S. for recognition, but receives no response. At this time British forces occupy the Saigon area to take over from the Japanese and begin to rearm the French, and later even the Japanese against the Vietminh.</p>
+                <p>On November 22, French troops return to Vietnam, transported in U.S. merchant ships, and sporadically clash with Communist and Nationalist forces.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-l">
+              <div class="flag-wrapper">
+                <span class="flag">1946</span>
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>On March 6th, France recognizes the Democratic Republic of Vietnam (DRV) as a free state within the Indochinese Federation and French Union. Rejecting this as a phony independence the Viet Minh initiate the eight-year First Indochina War
+                  in December with attacks on French troops in the North. Using U.S. vessels the French bombard the port of Haiphong, killing 6,000 civilians, then occupy the port and the city of Hanoi.</p>
+
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-r">
+              <div class="flag-wrapper">
+                <span class="flag">1947</span>
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>The Truman Doctrine is issued, promising U.S. support for armed opposition to communists across the globe.</p>
+
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-l">
+              <div class="flag-wrapper">
+                <span class="flag">1948</span>
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>The Cold War with the Soviet Union opens most dramatically with the Berlin Airlift ordered by President Truman. The communist government of East Germany, with the direction and backing of the Soviet Union, blockaded access to West Berlin
+                  in an effort to remove the joint British, French, and American zone of control in the city.</p>
+                <p>Washington initiates funding for the French war against the Viet Minh.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-r">
+              <div class="flag-wrapper">
+                <span class="flag">1949</span>
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>In March France recognizes an &#8220;independent&#8221; state of Vietnam; Bao Dai becomes its leader in June. During July, Laos is also recognized as an independent state with ties to France. In November the same status is accorded to
+                  Cambodia.</p>
+                <p>Chinese communists proclaim the People&#8217;s Republic of China.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-l">
+              <div class="flag-wrapper">
+                <span class="flag">1950</span>
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>The newly established People's Republic of China, followed by the Soviet Union, recognizes the Democratic Republic of Vietnam led by Ho Chi Minh in January.</p>
+                <p>Washington recognizes the French controlled Bao Dai government.</p>
+                <p>The Korean War begins in June with a devastating attack by the Communist North on South Korea.</p>
+                <p>In November, as U.S. forces approach the North Korean border with China, the Chinese Army enters the war and forces U.S. troops into full retreat.</p>
+                <p>In May, the U.S. begins providing help to the French in Vietnam, Laos, and Cambodia. In August the Pathet Lao communist party and guerrilla group is formed. Discussions among the five nations results in Washington&#8217;s dispatch of the
+                  Military Assistance Advisory Group (MAAG) to Vietnam. Eventually over 250 U.S. pilots assist the French in their war against the Viet Minh.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-r">
+              <div class="flag-wrapper">
+                <span class="flag">1951</span>
+
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>Communists from Thailand, Laos, and North Vietnam meet in March. As a result an agreement is reached whereby the Vietminh are allowed to use areas in Laos along the border with Vietnam for the staging of equipment and men in their war
+                  against the French. During the later American war this will become part of the &#8220;Ho Chi Minh&#8221; Trail.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-l">
+              <div class="flag-wrapper">
+                <span class="flag">1952</span>
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>400 U.S. advisers and supply personnel are serving in Vietnam. Toward the end of the year the French casualties approach 90,000. General Giap begins to develop a strategy to draw the French out to the Laotian border by conducting a show
+                  of strength with a march into Laos to the outskirts of Luang Prabang, the royal capitol.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-r">
+              <div class="flag-wrapper">
+                <span class="flag">1953</span>
+
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>The U.S. is providing increasing support for the French effort in Indochina, supplying 80% of the dollar cost. A December Viet Minh offensive cuts Vietnam in two near the 17th parallel.</p>
+                <p>Prince Norodom Sihanouk gains independence for Cambodia from France.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-l">
+              <div class="flag-wrapper">
+                <span class="flag">1954</span>
+
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>Early in the spring the siege of Dien Bien Phu (located in the rugged mountains of Northwestern (North) Vietnam near the Laotian border begins. Pathet Lao forces block French relief units from getting through to Dien Bien Phu from Laos.
+                  As food, ammunition, and medical supplies dwindle, France request American intervention. The Chairman of the Joint Chiefs of Staff, Admiral Radford, the Secretary of State John F. Dulles, and Vice President Richard M. Nixon call for
+                  direct American military intervention. However, after discussion with other military advisors, including Army Chief of Staff Gen. Matthew Ridgway, and unable to secure congressional support,, President Eisenhower declines to commit troops.
+                  On May 7th the remnants of the French garrison at Dien Bien Phu surrender.
+                </p>
+                <p>Faced with defeat on the battlefield, France agrees to a conference in Geneva, including the U.S., France, Britain, China and the U.S.S.R.</p>
+                <p>In June Colonel Edward Lansdale arrives in Saigon to set up the U.S. military mission, as well as to direct covert operations designed to sabotage the DRV.</p>
+                <p>Ngo Dinh Diem becomes Prime Minister of South Vietnam. He completes the organization of his cabinet by July 7th.</p>
+                <p>On July 20 and 21, 1954 all parties except the U.S. and South Vietnam sign the Geneva Accords. Though Washington and Saigon refuse to sign, they agree to observe the terms.</p>
+                <p>The Accords provide:</p>
+                <p>To foster a &#8220;cooling off&#8221; period and separate warring forces, Vietnam is temporarily divided at the 17th parallel; the north to be governed by Communists under Ho Chi Minh, while the south would be governed under Diem, until
+                  internationally monitored national elections can be held. The option of relocation for people That all foreign troops be removed except French troops in South who will remain until mandated elections. A no reprisal clause Vietnam-wide
+                  elections to be held in 1956 to choose the government of the entire nation. Laos and Cambodia to be recognized as independent (Cambodia on September 25th and Laos later in the year). In October President Dwight D. Eisenhower advises
+                  Diem that the U.S. will provide assistance directly to South Vietnam, instead of channeling it through French authorities.</p>
+                <p>A short time later the Eisenhower administration provides economic and military aid to South Vietnam under the leadership of Diem. This coincides with the establishment of the Southeast Asia Treaty Organization (SEATO) on September 7th.
+                  The agreement, signed in Manila, was devised to check communist expansion in the region. Although there are no provisions requiring any of the signatories,(U.S., Britain, France, Australia, New Zealand, Pakistan, Thailand, and the Philippines)
+                  to provide support for South Vietnam, there is a provision declaring that should South Vietnam be attacked the members would immediately initiate armed force against the &#8220;aggressor.&#8221;</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-r">
+              <div class="flag-wrapper">
+                <span class="flag">1955</span>
+
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>The Diem regime begins to consolidate its position. By mid May South Vietnam formally requests U.S. instructors for its army, the Army of the Republic of Vietnam (ARVN). Hanoi brings forth a proposal to normalize relations in order to
+                  prepare for the elections scheduled by the Geneva Accords. However, on July 20th, backed by Washington, Diem announces his refusal to take part in the general elections scheduled for the following year by the Geneva Agreements. The Diem
+                  regime argues that free elections are impossible in the Communist North. However, Diem organizes a rigged election in the South and proclaims himself the victor. The U.S. quickly recognizes Diem&#8217;s government as the &#8220;legitimate&#8221;
+                  government of all of Vietnam and begins to finance the government and the newly established Army of the Republic of South Vietnam (ARVN).</p>
+                <p>In Cambodia Prince Norodom Sihanouk abdicates his throne as King in favor of his parents. This opens the way for his entry into politics as the national leader of a socialist political party, the Sangkum. For Sihanouk and many political
+                  activists in Cambodia this represents a centrist path between the political right of the Democratic Party and communist controlled Pracheachon to the left.</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-l">
+              <div class="flag-wrapper">
+                <span class="flag">1956</span>
+
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>Despite Washington&#8217;s promise to honor the Geneva Accords, an American Military Assistance Advisory Group (MAAG) takes over the training of South Vietnamese forces in late April. This represents the beginning of the &#8220;advisory&#8221;
+                  force that will number nearly a thousand troops by the end of the Eisenhower administration.</p>
+                <p>The French command disbands and French troops leave South Vietnam.</p>
+                <p>In violation of the Geneva Accords Diem begins to arrest all those identified as involved in the war against the French. Facing opposition across the south as America&#8217;s &#8220;puppet,&#8221; Diem initiates a terror campaign and begins
+                  forcibly to displace peasants from their ancestral villages into government holding camps, or &#8220;strategic hamlets.&#8221;</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-r">
+              <div class="flag-wrapper">
+                <span class="flag">1957</span>
+
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>On January 3, 1957 the International Control Commission declares that both North and South Vietnam had failed to comply with the Geneva Agreements.</p>
+
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="direction-l">
+              <div class="flag-wrapper">
+                <span class="flag">1958</span>
+
+                <span class="time-wrapper"><span class="time">Year</span></span>
+              </div>
+              <div class="desc">
+                <p>&#8220;The Rockefeller Report&#8221; on defense policy and strategy is issued pushing the concept of graduated deterrence and flexible response as rational alternatives to massive retaliation. The principal authors of the report are Townsend
+                  Hoopes and Henry Kissinger.</p>
+                <p>In January the communists assault a plantation north of Saigon. As ever more guerrilla incidents in South Vietnam increase, the U.S. becomes increasingly concerned about the infiltration of cadres from the north, though the majority at
+                  this stage are native southerners returning to their southern villages as they intended to do after the nationwide elections that were never held. Intelligence indicates that the Annam Cordilla (the spine of mountains running north to
+                  south through the center of Indochina - along the western border of North and South Vietnam, and eastern Laos) is quickly becoming a major infiltration route (later called the Ho Chi Minh trail).</p>
+                <p>Following the methods employed by the French, the U.S. finds local spokespersons and forms an alliance with the minority populations of various hill tribes (Hmong, Yao, Meo, etc.). In Laos, Col. Vang Pao, a Meo tribesman by origin, is
+                  enjoined to organize harassment and interdiction of the growing North Vietnamese supply line.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <video style="display:block; margin:0 auto;" width="400" controls>
+          <source src="videos/Vietnam a brief history.mp4" type="video/mp4">
+        </video>
+        <br />
+        <video style="display:block; margin:0 auto;" width="400" controls>
+          <source src="videos/video.mp4" type="video/mp4">
+        </video>
+        <br />
+        <audio style="display:block; margin:0 auto;" width="400" controls>
+          <source src="sounds/audio.mp4" type="audio/mp3">
+        </audio>
+        <div class="post-row">
+          <div id="div-left">
+            <div class="div-content">
+              <h1>Country history</h1>
+              <img src="images/Old-Temple-in-Hanoi-North-Vietnam.jpg" alt="1" onclick="large('images/Old-Temple-in-Hanoi-North-Vietnam.jpg')">
+              <p>
+                Archaeological findings from 1965, still under research, show the remains of two hominins closely related to Sinanthropus, dating as far back as the Middle Pleistocene era, roughly half a million years ago. Ancient Vietnam was home to some of the world's earliest civilizations and societies—making them one of the world's first people who practiced agriculture.
+              </p>
+              <p>
+                The Red River valley formed a natural geographic and economic unit, bounded to the north and west by mountains and jungles, to the east by the sea and to the south by the Red River Delta. The need to have a single authority to prevent floods of the Red River, to cooperate in constructing hydraulic systems, trade exchange, and to fight invaders, led to the creation of the first Vietnamese states approximately 2879 BC.
+              </p>
+               <p>
+                The Red River valley formed a natural geographic and economic unit, bounded to the north and west by mountains and jungles, to the east by the sea and to the south by the Red River Delta. The need to have a single authority to prevent floods of the Red River, to cooperate in constructing hydraulic systems, trade exchange, and to fight invaders, led to the creation of the first Vietnamese states approximately 2879 BC.
+              </p>
+              <p>
+              Another truly influential part of history in Vietnam occurred during the late Bronze Age, when the Đông Sơn culture dramatically advanced the civilization. Vietnam's peculiar geography made it a difficult country to attack, which is why Vietnam under the Hùng kings was for so long an independent and self-contained state. The Xích Tỵs and Qins were among the earliest foreign aggressors of Vietnam, but the ancient Vietnamese managed to regain control of the country soon after the invasions.
+              </p>
+            </div>
+          </div>
+          <div id="div-center">
+            <div class="div-content">
+              <h1>Historical events</h1>
+              <p>
+                Vietnam was part of Imperial China for over a millennium, from 111 BC to AD 939. The Vietnamese became independent in 939, following the Vietnamese victory in the Battle of Bạch Đằng River. Successive Vietnamese royal dynasties flourished as the nation expanded geographically and politically into Southeast Asia, until the Indochina Peninsula was colonized by the French in the mid-19th century. Following a Japanese occupation in the 1940s, the Vietnamese fought French rule in the First Indochina War, eventually expelling the French in 1954. Thereafter, Vietnam was divided politically into two rival states, North and South Vietnam. Conflict between the two sides intensified, with heavy intervention from the United States, in what is known as the Vietnam War. The war ended with a North Vietnamese victory in 1975.
+              </p>
+              <img src="images/Old_Quarter,_Hanoi,_Vietnam_(5246400840).jpg" alt="1" onclick="large('images/Old_Quarter,_Hanoi,_Vietnam_(5246400840).jpg')">
+              <p>
+               Vietnam was then unified under a communist government but remained impoverished and politically isolated. In 1986, the government initiated a series of economic and political reforms which began Vietnam's path towards integration into the world economy. By 2000, it had established diplomatic relations with all nations. Since 2000, Vietnam's economic growth rate has been among the highest in the world, and, in 2011, it had the highest Global Growth Generators Index among 11 major economies. Its successful economic reforms resulted in its joining the World Trade Organization in 2007.
+              </p>
+            </div>
+          </div>
+          <div id="div-right">
+            <div class="div-content">
+              <h1>Famous Leaders</h1>
+              <img src="images/Ngo.jpg" alt="1" onclick="large('images/Ngo.jpg')">
+              <p>
+                 Former mandarin of the Nguyễn dynasty, a Prime Minister of State of Vietnam led by Bảo Đại since 1954. In October 1955, he announced a victory after a plebiscite, deposed Bảo Đại and established the first Republic of Vietnam (RVN) in South Vietnam. In November 1963, after constant religious protests and non-violent resistances, Diệm was assassinated, along with his brother, Ngô Đình Nhu, by Nguyễn Văn Nhung, the aide of the leader of The Army of Republic of Vietnam (ARVN) General Dương Văn Minh during a coup d'état sanctioned by the US. The assassination led to the end of the US-Diệm alliance and the collapse of his regime as well as the first Republic of Vietnam.
+              </p>
+              <p>
+                
+Diệm has been a controversial historical figure in historiography on Vietnam War scholarship. Some historians portrayed him as a tool of the US policymakers, some considered him as an avatar of Vietnamese tradition. Nevertheless, some recent studies have portrayed Diệm from a more Vietnamese centered perspective as a competent leader with his own vision on nation building and modernization of South Vietnam
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer">
+        <div class="align-left content-left">
+          Zameel Zubair &amp; Raza Baloch &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+        </div>
+
+        <div class="align-right content-right">
+          <div id="navbar-footer">
+            <a href="index.html">Home</a>
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="history.html"><span class="gold">History</span></a>
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="demographics.html">Demographics</a>
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="culture.html">Culture</a>
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="geography.html">Geography</a>
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="gallery.html">Gallery</a>                
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="map.html">Map</a>
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="sitemap.html">Sitemap</a>
+            <span class="dash-black">&nbsp;|&nbsp;</span>
+            <a href="reference.html">Reference</a>              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var divTag = document.getElementsByTagName("img").item(0);
+
+    function large(imgSrc) {
+      document.getElementById('light').style.background = "url(" + imgSrc + ") no-repeat";
+      document.getElementById('light').style.backgroundSize = "80vw";
+      document.getElementById('light').style.display = 'block';
+      //                document.getElementById('fade').style.display='block';
+      document.getElementById('wrapper').style.opacity = "0.1";
+      document.body.style.backgroundColor = "#0E0E0C";
+
+    }
+
+    function normal() {
+      document.getElementById('light').style.display = 'none';
+      //                document.getElementById('fade').style.display='none';
+      document.getElementById('wrapper').style.opacity = "1";
+      document.body.style.backgroundColor = "#feb200";
+    }
+
+    function onReady(callback) {
+      var intervalID = window.setInterval(checkReady, 1200);
+
+      function checkReady() {
+        //            if (document.getElementsByTagName('body')[0] !== undefined) {
+        window.clearInterval(intervalID);
+        callback.call(this);
+        //            }
+      }
+    }
+
+    function show(id, value) {
+      document.getElementById(id).style.display = value ? 'block' : 'none';
+    }
+
+    onReady(function() {
+      show('loading-wrapper', true);
+      show('loading', false);
+    });
+  </script>
+  <script type="text/javascript">
+    var myHilitor;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      myHilitor = new Hilitor2("playground");
+      myHilitor.setMatchType("left");
+    }, false);
+
+    document.getElementById("keywords").addEventListener("keyup", function() {
+      myHilitor.apply(this.value);
+    }, false);
+  </script>
+  <!--
+    
+    <script type="text/javascript">
+         
+            function redirect(evt) {
+                var keywords = document.getElementById("keywords").value;
+                document.documentElement.outerHTML;
+                document.documentElement.innerHTML;
+                     while (true) { 
+                         window.location=keywords + ".html";
+                         window.location
+                        }
+               
+            }
+            
+      </script>
+-->
+  <script>
+ var docdoc = document.getElementById("changetheme");
+    function formatAMPM(date) {
+      var hours = date.getHours() + 4;
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      var seconds = date.getSeconds();
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      var strTime = hours + ':' + minutes + ":" + seconds + ' ' + ampm;
+      return strTime;
+    }
+
+    function startTime() {
+      var today = new Date();
+      var date = formatAMPM(today);
+      //    var h = today.getHours()+4;
+      //    var m = today.getMinutes();
+      //    var s = today.getSeconds();
+      //    m = checkTime(m);
+      //    s = checkTime(s);
+      document.getElementById('txt').innerHTML = date;
+      //                h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+    //function checkTime(i) {
+    //    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    //    return i;
+    //}
+	 function redStyleSheet() {
+     docdoc.setAttribute('href', 'css/style.css');
+    }
+
+    function goldStyleSheet() {
+      docdoc.setAttribute('href', 'css/change.css');
+    }
+  </script>
+
+</body>
+
+</html>

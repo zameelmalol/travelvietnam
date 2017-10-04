@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" id="changetheme" />
+  <script type="text/javascript" src="js/script.js"></script>
+  <link rel="stylesheet" href="css/gallery.css" type="text/css" />
+  <script src="js/gallery.js" type="text/javascript"></script>
+  <script>
+  		var docdoc = document.getElementById("changetheme");
+			 function redStyleSheet() {
+     docdoc.setAttribute('href', 'css/style.css');
+    }
+
+    function goldStyleSheet() {
+      docdoc.setAttribute('href', 'css/change.css');
+    }
+	
+	  function formatAMPM(date) {
+      var hours = date.getHours() + 4;
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      var seconds = date.getSeconds();
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      var strTime = hours + ':' + minutes + ":" + seconds + ' ' + ampm;
+      return strTime;
+    }
+
+    function startTime() {
+      var today = new Date();
+      var date = formatAMPM(today);
+      //    var h = today.getHours()+4;
+      //    var m = today.getMinutes();
+      //    var s = today.getSeconds();
+      //    m = checkTime(m);
+      //    s = checkTime(s);
+      document.getElementById('txt').innerHTML = date;
+      //                h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+	</script>
+  <title>CP3170 Project - Gallery</title>
+
+</head>
+
+<body onload="startTime()">
+  <div id="wrapper">
+    <div id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="demographics.html">Demographics</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <div id="txt" class="pos-text"></div>
+        <div class="gold-box" onclick="goldStyleSheet()"></div>
+        <div class="red-box" onclick="redStyleSheet()"></div>
+      </ul>
+    </div>
+
+    <div class="example" id="gall">
+      <img src="images/gallery/pic1.jpg"><span>Picture 1 title<br>and description.</span>
+      <img src="images/gallery/pic2.jpg"><span>Picture 2 description.</span>
+      <img src="images/gallery/pic3.jpg"><span>Picture 3 description.</span>
+      <img src="images/gallery/pic4.jpg"><span>Picture 4 description.</span>
+      <img src="images/gallery/pic5.jpg"><span>Picture 5 description.</span>
+      <img src="images/gallery/pic6.jpg"><span>Picture 6 description.</span>
+      <img src="images/gallery/pic7.jpg"><span>Picture 7 description.</span>
+      <img src="images/gallery/pic8.jpg"><span>Picture 8 description.</span>
+      <img src="images/gallery/pic9.jpg"><span>Picture 9 description.</span>
+      <img src="images/gallery/pic10.jpg"><span>Picture 10 description.</span>
+      <img src="images/gallery/pic11.jpg"><span>Picture 11 description.</span>
+      <img src="images/gallery/pic12.jpg"><span>Picture 12 description.</span>
+      <img src="images/gallery/pic13.jpg"><span>Picture 13 description.</span>
+      <img src="images/gallery/pic14.jpg"><span>Picture 14 description.</span>
+      <img src="images/gallery/pic15.jpg"><span>Picture 15 description.</span>
+    </div>
+  </div>
+
+</body>
+
+</html>
